@@ -1,0 +1,32 @@
+import random
+
+# Dictionary of predefined responses for various inputs
+responses = {
+    "hello": ["Hello!", "Hi there!", "Greetings!"],
+    "how are you": ["I'm just a computer program, but I'm here to help!", "I'm doing well, thank you! How can I assist you?"],
+    "what is your name": ["I'm a chatbot created to provide information and assist with tasks.", "You can call me ChatGPT."],
+    "goodbye": ["Goodbye!", "Farewell!", "Have a great day!"],
+    "space": ["Space is vast and full of wonders.", "What would you like to know about space?", "Space exploration has led to many discoveries."],
+    "nature": ["Nature is beautiful and diverse.", "Tell me more about your favorite aspect of nature.", "Nature is essential for life on Earth."],
+    "flowers": ["Flowers come in many shapes and colors.", "Do you have a favorite type of flower?", "The study of flowers is called botany."],
+    "human body": ["The human body is a complex system.", "What specific aspect of the human body are you interested in?", "Our bodies are made up of trillions of cells."],
+    "default": ["I'm not sure I understand that. Can you please rephrase?", "I don't have information on that topic. Is there something else you'd like to know?"]
+}
+
+# Function to get a response based on the user's input
+def get_response(user_input):
+    user_input = user_input.lower()
+    for key in responses:
+        if key in user_input:
+            return random.choice(responses[key])
+    return random.choice(responses["default"])
+
+# Main conversation loop
+print("Chatbot: Hello! How can I assist you today?")
+while True:
+    user_input = input("You: ")
+    if user_input.lower() == "exit":
+        print("Chatbot: Goodbye!")
+        break
+    response = get_response(user_input)
+    print("Chatbot:", response)
